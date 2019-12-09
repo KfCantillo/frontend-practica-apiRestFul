@@ -27,8 +27,8 @@ export default class Posts extends Component {
     if (!Token) {
         window.location.href= "/sign-in";
     }
-    const users = await axios.get("https://api-practica-kevin-cantillo.herokuapp.com/users");
-    const posts = await axios.get("https://api-practica-kevin-cantillo.herokuapp.com/posts/user/current", {
+    const users = await axios.get("//localhost:4000/users");
+    const posts = await axios.get("//localhost:4000/posts/user/current", {
       headers: { "x-access-token": Token }
     });
     if (!posts.data.auth && posts.status!==200) {
@@ -50,7 +50,7 @@ export default class Posts extends Component {
   }
 
   searchPosts = async ()=>{
-    const posts = await axios.get('https://api-practica-kevin-cantillo.herokuapp.com/posts', {headers: { "x-access-token": Token }});
+    const posts = await axios.get('//localhost:4000/posts', {headers: { "x-access-token": Token }});
     //console.log(posts);
     this.setState({
         posts: posts.data
@@ -58,7 +58,7 @@ export default class Posts extends Component {
   }
   deletePost = async (_id)=>{
     if (window.confirm("¿Desea eliminar este Posts?")) {
-        const post = await axios.delete(`https://api-practica-kevin-cantillo.herokuapp.com/posts/${_id}`, {headers: { "x-access-token": Token }});
+        const post = await axios.delete(`//localhost:4000/posts/${_id}`, {headers: { "x-access-token": Token }});
         if(post.data.status==='ok'){
             window.alert('Post eliminado con éxito!');
             this.searchPosts();

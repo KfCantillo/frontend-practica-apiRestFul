@@ -28,7 +28,7 @@ export default class SignUp extends Component {
         let state = this.state;
         if(state.password===state.password2){
             delete state['password2'];
-            const user = await axios.put('https://api-practica-kevin-cantillo.herokuapp.com/users', state);
+            const user = await axios.put('//localhost:4000/users', state);
             console.log(user);
             window.alert(user.data.message);
             if(user.data.status==="ok"){
@@ -40,7 +40,7 @@ export default class SignUp extends Component {
     }
 
     async componentDidMount() {
-        const res = await axios.get('http:https://api-practica-kevin-cantillo.herokuapp.com/users');
+        const res = await axios.get('http://localhost:4000/users');
         console.log(res);
         window.M.updateTextFields();
     }

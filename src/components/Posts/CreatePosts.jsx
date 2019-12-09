@@ -41,9 +41,9 @@ export default class CreatePosts extends Component {
                 delete data.__v
                 delete data._id
                 delete data._id_users
-                post = await axios.post(`https://api-practica-kevin-cantillo.herokuapp.com/posts/${this.props._id}`, data, {headers: {"x-access-token": Token}});
+                post = await axios.post(`//localhost:4000/posts/${this.props._id}`, data, {headers: {"x-access-token": Token}});
             }else{
-                post = await axios.put('https://api-practica-kevin-cantillo.herokuapp.com/posts', data, {headers: {"x-access-token": Token}});        
+                post = await axios.put('//localhost:4000/posts', data, {headers: {"x-access-token": Token}});        
             }
             //console.log(post);
             window.alert(post.data.message);
@@ -60,7 +60,7 @@ export default class CreatePosts extends Component {
   }
 
   searchPost = async (_id)=>{
-    const posts = await axios.get(`https://api-practica-kevin-cantillo.herokuapp.com/posts/${_id}`, {headers: { "x-access-token": Token }});
+    const posts = await axios.get(`//localhost:4000/posts/${_id}`, {headers: { "x-access-token": Token }});
     console.log(posts.data[0]);
     this.setState(posts.data[0],()=>{
         window.M.updateTextFields();
@@ -68,7 +68,7 @@ export default class CreatePosts extends Component {
   }
 
   imgUpload = file=>{
-    const url = 'https://api-practica-kevin-cantillo.herokuapp.com/posts/upload';
+    const url = '//localhost:4000/posts/upload';
 
     const formData = new FormData();
     formData.append('file',file)

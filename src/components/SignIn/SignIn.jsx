@@ -22,7 +22,7 @@ export default class SignIn extends Component {
 
     handleAuthLogin = async e=>{
         e.preventDefault();
-        const log = await axios.post('https://api-practica-kevin-cantillo.herokuapp.com/users/login', this.state);
+        const log = await axios.post('//localhost:4000/users/login', this.state);
         if(log.data.auth){
             localStorage.setItem('tokenKfC', log.data.token);
             window.location.href="./posts";
